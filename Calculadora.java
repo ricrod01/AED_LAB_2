@@ -1,16 +1,35 @@
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Clase que representa una Calculadora basada en un Stack.
+ * Permite evaluar expresiones matemáticas utilizando notación polaca inversa.
+ */
+
 public class Calculadora
 {
     private Stack<Integer> vector;
     private List<Character> operaciones;
 
+/**
+     * Constructor de la clase Calculadora.
+     * Inicializa la pila y define los operadores soportados.
+     */
     public Calculadora()
     {
         this.vector = new VectorStack<>();
         this.operaciones = Arrays.asList('+', '-', '*', '/', '%');
     }
+
+/**
+     * Método que verifica el tipo de carácter proporcionado.
+     * 
+     * @param caracter Carácter a evaluar.
+     * @return 0 si es un espacio en blanco, 
+     *         1 si es una operación válida (+, -, *, /, %),
+     *         2 si es un número,
+     *         3 si es un carácter inválido.
+     */
 
     public int CorroboraTexto(char caracter)
     {
@@ -35,6 +54,13 @@ public class Calculadora
             }
         }
     }
+
+    /**
+     * Método que realiza una operación matemática utilizando los valores guardados en la pila.
+     * 
+     * @param caracter Operador matemático a aplicar (+, -, *, /, %).
+     * @return true si la operación fue exitosa, false si la operación no pudo realizarse.
+     */
 
     public boolean Operar(char caracter)
     {
@@ -72,6 +98,14 @@ public class Calculadora
         return false;
     }
 
+    /**
+     * Método que evalúa una expresión matemática en formato de cadena y devuelve el resultado.
+     * La expresión debe estar en notación polaca inversa.
+     * 
+     * @param linea Expresión matemática a evaluar.
+     * @return El resultado de la operación si es válida, -1 si la operación es inválida.
+     */
+    
     public int Resultado(String linea)
     {
         String numero_str = "";
